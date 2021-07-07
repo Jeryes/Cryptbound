@@ -12,16 +12,25 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        forward = Camera.main.transform.forward;
-        forward.y = 0;
-        forward = Vector3.Normalize(forward);
-        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        CameraUpdate();
     }
 
     void Update()
     {
         if(Input.anyKey)
+        {
+            CameraUpdate();
             Move();
+        }
+           
+    }
+
+    void CameraUpdate()
+    {
+        forward = Camera.main.transform.forward;
+        forward.y = 0;
+        forward = Vector3.Normalize(forward);
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
     }
 
     void Move()
